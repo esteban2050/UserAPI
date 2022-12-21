@@ -59,9 +59,9 @@ Feature: get user on regres
     And match response == actualResponse
 
   Scenario: Executing a java script function
-    * def fakeValue = function () {Math.floor((1000) * Math.random());}
+    * def fakeValue = function () {return Math.floor((1000) * Math.random());}
     Given path "api/users?page=1"
     When method get
     Then status 200
     And print response
-    And match response.data[0].id != fakeValue
+    And match response.data[0].id != fakeValue()

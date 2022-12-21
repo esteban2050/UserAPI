@@ -32,9 +32,9 @@ Feature: post user on regres
     Then status 201
 
   Scenario Outline: post a user using java class
-    * def javaClass = Java.type('generateUser')
-    * def result = javaClass.body()
-    Given request { "name": "'<name>'", "job": "'<job>'" }
+    * def javaClass = Java.type('users.post.generateUser')
+    * def result = javaClass.body('<name>', '<job>' )
+    Given request result
     When method post
     Then status 201
     Examples:
